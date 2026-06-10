@@ -131,9 +131,17 @@ create index idx_catalog_versions_scope_created on catalog_versions(scope, creat
 - `category`를 자유 텍스트로 둘지 별도 코드 테이블로 둘지 결정해야 한다.
 - catalog snapshot payload를 DB에 저장할지 object storage에 둘지 결정해야 한다.
 
+## 확정된 환경 구성
+
+- PostgreSQL은 Docker 기반으로 운영한다.
+- 개발, 검증, 운영 환경은 브랜치 기준에 맞춰 DB 포트, DB 계정, Docker 볼륨, DB명을 분리한다.
+- API 서버와 PostgreSQL은 Docker 내부 네트워크로 연결하며, DB 포트는 외부 인터넷에 공개하지 않는다.
+- PostgreSQL 컨테이너 환경변수는 `/opt/singziller/postgres/dev/.env`, `/opt/singziller/postgres/stg/.env`, `/opt/singziller/postgres/prd/.env`에 둔다.
+- 애플리케이션 서버의 `DATABASE_URL`은 PostgreSQL 환경변수를 바탕으로 배포 단계에서 만든다.
+- 자세한 환경 매핑은 [DB 환경 구성](../08-project-management/DB-환경-구성.md)을 따른다.
+
 ## 보완 필요
 
 - status/check constraint 목록 정의.
-- migration 도구 선택.
 - 운영자 변경 이력 audit table 추가 여부 검토.
 - 한국어 검색을 위한 trigram/형태소 전략 검토.
