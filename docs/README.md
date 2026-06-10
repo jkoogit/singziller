@@ -31,6 +31,7 @@ docs/
 - [서비스 설계서](04-service-design/서비스-설계서.md)
 - [작업 일정](08-project-management/작업-일정.md)
 - [브랜치 운영 프로세스](08-project-management/브랜치-운영-프로세스.md)
+- [DB 환경 구성](08-project-management/DB-환경-구성.md)
 
 ## 관리 문서
 
@@ -41,4 +42,5 @@ docs/
 - [개발 규칙](07-development/개발-규칙.md)
 - [다음 작업 체크리스트](08-project-management/다음-작업-체크리스트.md)
 - [브랜치 운영 프로세스](08-project-management/브랜치-운영-프로세스.md)
+- [DB 환경 구성](08-project-management/DB-환경-구성.md)
 - [작업 리뷰 템플릿](reviews/review-template.md)
