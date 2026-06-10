@@ -32,6 +32,7 @@ docs/
 - [작업 일정](08-project-management/작업-일정.md)
 - [브랜치 운영 프로세스](08-project-management/브랜치-운영-프로세스.md)
 - [DB 환경 구성](08-project-management/DB-환경-구성.md)
+- [보안 환경변수 샘플](08-project-management/보안-환경변수-샘플.md)
 
 ## 관리 문서
 
@@ -43,4 +44,5 @@ docs/
 - [다음 작업 체크리스트](08-project-management/다음-작업-체크리스트.md)
 - [브랜치 운영 프로세스](08-project-management/브랜치-운영-프로세스.md)
 - [DB 환경 구성](08-project-management/DB-환경-구성.md)
+- [보안 환경변수 샘플](08-project-management/보안-환경변수-샘플.md)
 - [작업 리뷰 템플릿](reviews/review-template.md)
