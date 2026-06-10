@@ -1,0 +1,18 @@
+{
+  "name": "노래질러 Singziller",
+  "short_name": "Singziller",
+  "description": "태진 TJ와 금영 KY 노래방 곡 목록, 레파토리, 북마크, 녹음을 관리하는 PWA",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#f4f6f4",
+  "theme_color": "#101820",
+  "lang": "ko-KR",
+  "icons": [
+    {
+      "src": "icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#101820">
+    <title>노래질러 Singziller</title>
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="app-header">
+      <div>
+        <p class="eyebrow">Singziller</p>
+        <h1>노래질러</h1>
+      </div>
+      <div class="header-actions">
+        <button id="installBtn" class="ghost" hidden>설치</button>
+        <button id="onlineState" class="status-pill" type="button">오프라인 준비중</button>
+      </div>
+    </header>
+
+    <main class="shell">
+      <nav class="tabs" aria-label="주요 화면">
+        <button class="tab active" data-view="search">검색</button>
+        <button class="tab" data-view="library">라이브러리</button>
+        <button class="tab" data-view="repertoire">레파토리</button>
+        <button class="tab" data-view="bookmarks">북마크</button>
+        <button class="tab" data-view="recordings">녹음</button>
+        <button class="tab" data-view="sync">동기화</button>
+      </nav>
+
+      <section id="search" class="view active">
+        <form id="searchForm" class="panel search-grid">
+          <label>
+            통합 검색
+            <input id="query" name="query" type="search" placeholder="제목, 가수, 번호, 링크">
+          </label>
+          <label>
+            브랜드
+            <select id="brand" name="brand">
+              <option value="">전체</option>
+              <option value="TJ">태진 TJ</option>
+              <option value="KY">금영 KY</option>
+            </select>
+          </label>
+          <label>
+            제목
+            <input id="title" name="title" type="search" placeholder="예: Ditto">
+          </label>
+          <label>
+            가수
+            <input id="artist" name="artist" type="search" placeholder="예: NewJeans">
+          </label>
+          <label>
+            노래번호
+            <input id="songNumber" name="songNumber" inputmode="numeric" placeholder="예: 12345">
+          </label>
+          <label>
+            분류
+            <select id="category" name="category">
+              <option value="">전체</option>
+              <option>K-POP</option>
+              <option>트로트</option>
+              <option>7080</option>
+              <option>팝송</option>
+              <option>동요</option>
+              <option>인기추천</option>
+            </select>
+          </label>
+          <label>
+            버전
+            <select id="version" name="version">
+              <option value="">전체</option>
+              <option>반주</option>
+              <option>MR</option>
+              <option>라이브</option>
+              <option>원곡</option>
+            </select>
+          </label>
+          <label>
+            링크
+            <select id="linkFilter" name="linkFilter">
+              <option value="">전체</option>
+              <option value="youtube">유튜브 있음</option>
+              <option value="spotify">스포티파이 있음</option>
+              <option value="missing">링크 없음</option>
+            </select>
+          </label>
+          <label>
+            정렬
+            <select id="sortBy" name="sortBy">
+              <option value="relevance">관련도</option>
+              <option value="title">제목</option>
+              <option value="artist">가수</option>
+              <option value="updatedAt">최근 수정</option>
+              <option value="brandCount">등록 버전 많은 순</option>
+            </select>
+          </label>
+          <div class="form-actions">
+            <button type="submit">검색</button>
+            <button id="resetSearch" class="ghost" type="button">초기화</button>
+          </div>
+        </form>
+        <div id="resultSummary" class="summary-line"></div>
+        <section id="results" class="results" aria-live="polite"></section>
+      </section>
+
+      <section id="library" class="view">
+        <div class="toolbar">
+          <h2>추천 라이브러리</h2>
+          <select id="libraryCategory">
+            <option>인기추천</option>
+            <option>K-POP</option>
+            <option>트로트</option>
+            <option>7080</option>
+            <option>팝송</option>
+            <option>동요</option>
+          </select>
+        </div>
+        <section id="libraryList" class="results"></section>
+      </section>
+
+      <section id="repertoire" class="view">
+        <div class="toolbar">
+          <h2>레파토리</h2>
+          <button id="clearRepertoire" class="ghost">비우기</button>
+        </div>
+        <section id="repertoireList" class="results empty"></section>
+      </section>
+
+      <section id="bookmarks" class="view">
+        <div class="panel stack">
+          <h2>북마크 그룹</h2>
+          <div class="inline-form">
+            <input id="bookmarkGroupName" placeholder="시트 또는 모임 이름">
+            <button id="addBookmarkGroup">그룹 추가</button>
+          </div>
+        </div>
+        <section id="bookmarkGroups" class="group-list"></section>
+      </section>
+
+      <section id="recordings" class="view">
+        <div class="panel stack">
+          <h2>녹음</h2>
+          <div class="recorder">
+            <button id="recordBtn">녹음 시작</button>
+            <button id="stopRecordBtn" class="ghost" disabled>정지</button>
+            <span id="recordState">대기</span>
+          </div>
+        </div>
+        <section id="recordingList" class="results empty"></section>
+      </section>
+
+      <section id="sync" class="view">
+        <div class="sync-layout">
+          <div class="panel stack">
+            <h2>곡 데이터 가져오기</h2>
+            <p>CSV 또는 JSON 파일을 가져오면 앱의 곡 목록으로 등록됩니다.</p>
+            <input id="importFile" type="file" accept=".csv,.json,text/csv,application/json">
+            <button id="downloadTemplate" class="ghost">CSV 템플릿</button>
+          </div>
+          <div class="panel stack">
+            <h2>내보내기</h2>
+            <button id="exportJson">JSON 내보내기</button>
+            <button id="exportCsv" class="ghost">CSV 내보내기</button>
+            <button id="importFromSheet" class="ghost">시트에서 가져오기</button>
+            <button id="syncLocalToSheet" class="ghost">시트 전체 덮어쓰기</button>
+            <button id="appendLocalToSheet" class="ghost">현재 곡 추가 업로드</button>
+          </div>
+          <div class="panel stack">
+            <h2>Google Drive / Sheets</h2>
+            <label>
+              Google OAuth Client ID
+              <input id="googleClientId" placeholder="웹 클라이언트 ID">
+            </label>
+            <label>
+              Spreadsheet ID
+              <input id="spreadsheetId" placeholder="구글 시트 ID">
+            </label>
+            <label>
+              Sheet 이름
+              <input id="sheetName" value="songs">
+            </label>
+            <button id="saveGoogleConfig">설정 저장</button>
+            <button id="googleLogin" class="ghost">구글 로그인</button>
+            <button id="googleLogout" class="ghost">연결 해제</button>
+            <p id="googleState" class="muted">로그인 없이도 검색과 로컬 관리는 사용할 수 있습니다.</p>
+            <p class="muted">Google OAuth는 file://가 아니라 http://localhost 또는 HTTPS 배포 주소에서 동작합니다.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <template id="songCardTemplate">
+      <article class="song-card">
+        <div class="song-main">
+          <div>
+            <span class="brand-chip"></span>
+            <h3></h3>
+            <p class="artist"></p>
+          </div>
+          <strong class="song-number"></strong>
+        </div>
+        <p class="meta"></p>
+        <div class="mapping"></div>
+        <div class="card-actions">
+          <button class="add-repertoire">레파토리</button>
+          <button class="bookmark ghost">북마크</button>
+          <a class="youtube" target="_blank" rel="noreferrer">YouTube</a>
+          <a class="spotify" target="_blank" rel="noreferrer">Spotify</a>
+          <button class="share ghost">공유</button>
+        </div>
+      </article>
+    </template>
+
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script src="app.js" defer></script>
+  </body>
+</html>
