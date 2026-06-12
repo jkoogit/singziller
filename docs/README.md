@@ -2,7 +2,7 @@
 
 ## 프로젝트 현황
 
-- [작업 현황판](08-project-management/작업-현황판.md)
+- [작업 현황판](08-project-management/project-dashboard.md)
 
 ## 문서 관리 규칙
 
