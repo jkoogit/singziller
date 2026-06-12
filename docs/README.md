@@ -1,8 +1,8 @@
 # Singziller Documentation Index
 
-## Project Status
+## 프로젝트 현황
 
-- [Project Dashboard](08-project-management/project-dashboard.md)
+- [작업 현황판](08-project-management/작업-현황판.md)
 
 ## 문서 관리 규칙
 
