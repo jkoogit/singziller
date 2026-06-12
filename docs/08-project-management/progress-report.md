@@ -43,3 +43,20 @@
 - `docs/superpowers/specs/2026-06-11-collection-source-policy-design.md`
 - `docs/06-collection/수집-소스-평가-정책.md`
 - `docs/08-project-management/수집-검증-운영계획.md`
+
+## 2026-06-12 - Collection Policy Foundation
+
+### Completed
+
+- Added collector provider interface, deterministic mock provider, and known-provider registry stubs.
+- Added stable raw payload hashing and an in-memory collection repository with provider/hash deduplication.
+- Added provider collection orchestration with collection run logging and inserted/duplicate counts.
+- Added source probe pause decisions for robots, blocking status codes, and parser mismatches.
+- Added collection schedule policy for weekly, monthly, mixed, and paused outcomes.
+- Added validation scoring for official, personal API, and manual override cases.
+
+### Verification
+
+- `node tests\sheets.test.js`
+- `cd server && npm test`
+- `cd server && npm run build`
