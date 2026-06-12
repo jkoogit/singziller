@@ -1,5 +1,9 @@
 # Singziller Documentation Index
 
+## Project Status
+
+- [Project Dashboard](08-project-management/project-dashboard.md)
+
 ## 문서 관리 규칙
 
 - 문서는 업무 성격별 폴더에 둔다.
